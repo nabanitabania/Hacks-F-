@@ -25,12 +25,13 @@ var ejs = fs.readFileSync("./views/index.ejs",'utf8');
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  secure: false,
-  port: 25,
+    service: 'gmail',
+    port: 25,
+    secure: false,
+    requireTLS: true,
   auth: {
-    user: 'tanveerahmedmaz@gmail.com',
-    pass: 'Tanveer12@'
+    user: 'nabanitabania78',
+    pass: 'Tanveer123'
   },
   tls: {
 	  rejectUnauthorized: false
@@ -278,36 +279,38 @@ index.put("/details/:id",function(req,res){
 
 					});
 
-					msg91SMS.send(args) // no need to pass contactNumbers and message parameter as we are passing sms key
-						.then((response) => {
-							console.log(response);
-						}).catch((error) => {
-							console.log(error);
-							if (error.data) {
-								console.log(error.data); // object containing api error code
-							} else {
-								console.log(error.message); // error message due to any other failure
-							}
-						});
+					// msg91SMS.send(args) // no need to pass contactNumbers and message parameter as we are passing sms key
+					// 	.then((response) => {
+					// 		console.log(response);
+					// 	}).catch((error) => {
+					// 		console.log(error);
+					// 		if (error.data) {
+					// 			console.log(error.data); // object containing api error code
+					// 		} else {
+					// 			console.log(error.message); // error message due to any other failure
+					// 		}
+					// 	});
+
+					console.log(email);
 
 					ejs.renderFile(__dirname + "/views/test.ejs", { vacc : found }, function (err, data) {
 						if (err) {
 							console.log(err);
 						} else {
 							var mainOptions = {
-							from: 'tanveerahmedmaz@gmail.com',
+							from: 'nabanitabania78@gmail.com',
 								to: email,
 								subject: 'Hello, world',
 								html: data
 							};
-							console.log("html data ======================>", mainOptions.html);
-							transporter.sendMail(mainOptions, function (err, info) {
-								if (err) {
-									console.log(err);
-								} else {
-									console.log('Message sent: ' + info.response);
-								}
-							});
+							// console.log("html data ======================>", mainOptions.html);
+							// transporter.sendMail(mainOptions, function (err, info) {
+							// 	if (err) {
+							// 		console.log(err);
+							// 	} else {
+							// 		console.log('Message sent: ' + info.response);
+							// 	}
+							// });
 						}
 						
 						});

@@ -50,11 +50,6 @@ var vaccSchema = mongoose.Schema({
 			}
 		   
 		},
-
-	date: {
-		type: Date,
-		default: Date.now()
-	},
 	hour:{
 		name: {type: String, default: "Hep B D1"},
 		check: {type: String, default: "False",}
@@ -100,7 +95,14 @@ var vaccSchema = mongoose.Schema({
 		check: {type: String, default: "False"}},
 		v17:{name: {type: String, default: "Hep B D3"},
 		check: {type: String, default: "False"}}
-	}
+	},
+	date: {
+		d1:{type: String},
+		d2:{type: String},
+		d3:{type: String},
+		d4:{type: String},
+		d5:{type: String}
+		},
 });
 
 var Vacc = mongoose.model("Vacc", vaccSchema);

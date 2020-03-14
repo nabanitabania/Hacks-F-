@@ -13,7 +13,9 @@
 			 <% vaccs.forEach(function(vacc){ %>
 			<div class="ui horizontal segments">
 				<div class="ui segment">
+					<% if(vacc.date.d1 < Date.now() && vacc.hour.check == "False"){ %>
 				  <a class="header" href="/details/<%= vacc._id %>"><%= vacc._id %></a>
+				  <% } %>
 				</div>
   			</div>
 		  <% }) %> 
